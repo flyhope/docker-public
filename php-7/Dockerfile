@@ -10,8 +10,8 @@ RUN yum install -y libxml2 libxml2-devel openssl-devel bzip2-devel libcurl-devel
 ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # 安装PHP
-RUN mkdir -p /data1/download && cd /data1/download 
-RUN curl -o /data1/download/php-7.1.7.tar.gz http://kr1.php.net/distributions/php-7.1.7.tar.gz && \
+RUN mkdir -p /data1/download && cd /data1/download  && \
+    curl -o /data1/download/php-7.1.7.tar.gz http://kr1.php.net/distributions/php-7.1.7.tar.gz && \
     tar zxvf php-7.*.tar.gz && \
     cd  /data1/download/php-7.* && \
     './configure' '--prefix=/usr/local/' '--with-libdir=lib64' '--with-mysqli=shared,/usr/bin/mysql_config' '--with-sqlite3=shared' '--with-curl=shared,/usr/local/curl/' '--with-ldap=shared' '--with-xmlrpc=shared' '--with-zlib=shared' '--with-bz2=shared' '--with-iconv=shared' '--with-mhash=shared' '--with-mcrypt=shared' '--with-gd=shared' '--with-png-dir=/usr' '--with-jpeg-dir=/usr' '--with-freetype-dir=/usr' '--enable-gd-native-ttf' '--disable-debug' '--disable-rpath' '--enable-simplexml' '--enable-libxml' '--enable-filter' '--enable-ftp' '--enable-xmlreader=shared' '--enable-xmlwriter=shared' '--enable-hash' '--enable-phar=shared' '--enable-json=shared' '--enable-dom=shared' '--enable-pdo=shared' '--with-pdo-mysql=shared,/usr' '--with-pdo-sqlite=shared,/usr' '--enable-zip=shared' '--with-zlib-dir=/usr' '--enable-dba=shared' '--with-gdbm' '--with-db4'  '--with-tcadb' '--enable-xml' '--with-xsl=shared,/usr' '--enable-mbstring=shared,all' '--enable-ftp=shared' '--enable-bcmath=shared' '--enable-shmop=shared' '--enable-sysvsem=shared' '--enable-sysvshm=shared' '--enable-sysvmsg=shared' '--enable-sockets=shared' '--enable-exif=shared' '--enable-soap=shared' '--enable-wddx=shared' '--with-tidy=shared,/usr' '--with-pic' '--enable-inline-optimization' '--with-openssl' '--with-gettext=shared' '--with-config-file-scan-dir=/usr/local/lib/php.d/' '--enable-fpm' '--enable-cli' '--enable-pcntl' && \
