@@ -10,8 +10,7 @@ RUN yum install -y libxml2 libxml2-devel openssl-devel bzip2-devel libcurl-devel
 ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # 安装PHP
-RUN mkdir -p /data1/download
-WORKDIR /data1/download
+RUN mkdir -p /data1/download && cd /data1/download 
 RUN curl -o /data1/download/php-7.1.7.tar.gz http://kr1.php.net/distributions/php-7.1.7.tar.gz && \
     tar zxvf php-7.*.tar.gz && \
     cd  /data1/download/php-7.* && \
@@ -86,7 +85,7 @@ RUN \
     chmod +x /usr/local/bin/phpunit
 
 # 设置配置文件
-COPY ./files/local/* /usr/local/
+ADD ./files/local/ /usr/local/
 
 # 工作目录
 WORKDIR /data1
